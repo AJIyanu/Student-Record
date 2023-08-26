@@ -30,7 +30,6 @@ class Persons():
     church = ""
     occupation = ""
     sex = ""
-    matric_no = ""
     image = ""
 
     def __init__(self, **kwargs):
@@ -58,7 +57,6 @@ class Persons():
                 self.dob = datetime.strptime(dob, "%Y-%m-%d")
             except TypeError:
                 self.dob = dob
-        print(kwargs, kwargs.items())
         for key, value in kwargs.items():
             setattr(self, key, value)
 
