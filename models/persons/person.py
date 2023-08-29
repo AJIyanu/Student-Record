@@ -18,6 +18,9 @@ class Persons():
     This class has all common attributes for all Persons
     """
 
+    __tablename__ = "allpersons"
+    __mapper_args__ = {'polymorphic_identity': 'allpersons',
+                       'polymorphic_on': 'personality'}
     id = ""
     created_at = ""
     updated_at = ""
@@ -59,6 +62,14 @@ class Persons():
                 self.dob = dob
         for key, value in kwargs.items():
             setattr(self, key, value)
+        from models import vault
+        vault.new(self)
+
+    def save_me(self):
+        """adds update to database"""
+        from models import vault
+        self.updated_at = datetime.now()
+        vault.save()
 
     def to_dict(self):
         """returns a dictionary representation of the class"""

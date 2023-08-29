@@ -6,27 +6,30 @@ This module defines class for score
 from uuid import uuid4
 import json
 from datetime import datetime
+from sqlalchemy import (Column, String, Text, CheckConstraint,
+                        DateTime, ForeignKey, Integer)
 
 from ..persons.person import Base
 
 
 class Score:
     """Score class"""
-    id = ""
-    session = ""
-    semester = ""
-    created_at = ""
-    updated_at = ""
-    lecturer_id = ""
-    student_id = ""
-    course_code = ""
-    level = ""
-    __unit = ""
-    __attendance = 10
-    __assignment = "" #json.dumps([{"mark obtained": 0, "mark obtainable": 10}])
-    __test = "" #json.dumps([{"mark obtained": 0, "mark obtainable": 20}])
-    __exam = "" #json.dumps({"mark obtained": 0, "mark obtainable": 60})
-    __score = "" #json.dumps({"mark obtained": 0, "mark obtainable": 100})
+    __tablename__ = "score"
+    id = Column(String(30), unique=True, primary_key=True, nullable=False)
+    session = Column(String(10))
+    semester = Column(Integer, CheckConstraint("semester <= 5"))
+    created_at = Column(DateTime, default=datetime.utcnow())
+    updated_at = Column(DateTime, default=datetime.utcnow())
+    lecturer_id = Column(String(30), ForeignKey("lecturer.id"))
+    student_id = Column(String(30), ForeignKey("student.id"))
+    course_code = Column(String(10))
+    level = Column(Integer, CheckConstraint("level IN ('Certificate', 'Diploma', 'Advanced')"))
+    __unit = Column(Integer)
+    __attendance = Column(Integer)
+    __assignment = Column(Text) #json.dumps([{"mark obtained": 0, "mark obtainable": 10}])
+    __test = Column(Text) #json.dumps([{"mark obtained": 0, "mark obtainable": 20}])
+    __exam = Column(Text) #json.dumps({"mark obtained": 0, "mark obtainable": 60})
+    __score = Column(String(60)) #json.dumps({"mark obtained": 0, "mark obtainable": 100})
 
 
     def __init__(self, **kwargs):
@@ -53,6 +56,14 @@ class Score:
                                  is not missing")
         for key, value in kwargs.items():
             setattr(self, key, value)
+        from models import vault
+        vault.new(self)
+
+    def save_me(self):
+        """adds update to database"""
+        from models import vault
+        self.updated_at = datetime.now()
+        vault.save()
 
     def to_dict(self):
         """returns a dictionary representation of the class"""
@@ -258,7 +269,7 @@ less than {mkobtnble}")
             return json.loads(self.__exam)
         return self.__exam
 
-    def calc_score(self, breakdown=False):
+    def calc_score(self):
         """
         returns a dictionary of detailed total sccore
         breakdwon turned true break down
@@ -272,10 +283,9 @@ less than {mkobtnble}")
         exam = get_average(self.view_exam(True), 60)
         breakdown_dict = {"attendance": attendance, "test": test,
                           "assignment": assignment, "exam":exam}
-        if breakdown:
-            return breakdown_dict
         result = {}
         total = attendance + assignment + test + exam
+        result.update(breakdown_dict)
         result.update(check_grade(total))
         result.update(total=total)
         # get course code method needs to be added so that it is updated

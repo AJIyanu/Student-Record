@@ -38,6 +38,14 @@ class Course:
                 self.created_at = date
         for key, value in kwargs.items():
             setattr(self, key, value)
+        from models import vault
+        vault.save(self)
+
+    def save_me(self):
+        """adds update to database"""
+        from models import vault
+        # self.updated_at = datetime.now()
+        vault.save()
 
     def to_dict(self):
         """returns a dictionary representation of the class"""

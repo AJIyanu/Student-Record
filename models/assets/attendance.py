@@ -38,6 +38,8 @@ class Attendance:
         self.status = False
         for key, value in kwargs.items():
             setattr(self, key, value)
+        from models import vault
+        vault.new(self)
 
     def to_dict(self):
         """returns a dictionary representation of the class"""
@@ -46,6 +48,12 @@ class Attendance:
         self_dict.update({'__class__': self.__class__.__name__})
         self_dict['created_at'] = self.created_at.isoformat()
         return self_dict
+
+    def save_me(self):
+        """adds update to database"""
+        from models import vault
+        # self.updated_at = datetime.now()
+        vault.save()
 
     def json_me(self):
         """returns a json representation of self"""
