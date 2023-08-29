@@ -6,18 +6,23 @@ This module defines class for attendance
 from uuid import uuid4
 import json
 from datetime import datetime
+from sqlalchemy import Column, String, DateTime, Integer, ForeignKey
+from sqlalchemy import CheckConstraint
 
 from ..persons.person import Base
 
 
-class Attendance:
+class Attendance(Base):
     """Attendance class"""
-    id = ""
-    session = ""
-    created_at = ""
-    student_id = ""
-    status = ""
-    offering = ""
+
+    __tablename___ = "attendance"
+    id = Column(String(30), primary_key=True, unique=True, nullable=False)
+    session = Column(String(10))
+    created_at = Column(DateTime, default=datetime.utcnow())
+    student_id = Column(String(30), ForeignKey("students.id"))
+    course_code = Column(String(10))
+    status = Column(Integer, CheckConstraint("status IN (0, 10)"))
+    offering = Column(Integer)
 
 
     def __init__(self, **kwargs):

@@ -6,20 +6,24 @@ This module defines class for course
 from uuid import uuid4
 import json
 from datetime import datetime
+from sqlalchemy import Column, String, Integer, ForeignKey, CheckConstraint
+from sqlalchemy import DateTime
 
 from ..persons.person import Base
 
 
-class Course:
+class Course(Base):
     """Course class"""
-    id = ""
-    session = ""
-    created_at = ""
-    lecturer_id = ""
-    code = ""
-    level = ""
-    semester = ""
-    unit = ""
+
+    __tablename__  = "courses"
+    id = Column(String(30), unique=True, primary_key=True, nullable=False)
+    session = Column(String(10))
+    created_at = Column(DateTime, default=datetime.utcnow())
+    lecturer_id = Column(ForeignKey("lecturers.id"))
+    code = Column(String(10))
+    level = Column(Integer, CheckConstraint("level IN ('Certificate', 'Diploma', 'Advanced')"))
+    semester = Column(Integer, CheckConstraint("semester <= 5"))
+    unit = Column(Integer)
 
 
     def __init__(self, **kwargs):

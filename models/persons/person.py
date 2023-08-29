@@ -9,6 +9,7 @@ from uuid import uuid4
 import json
 from datetime import datetime
 from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy import Column, String, Text, DateTime, CheckConstraint
 
 
 Base = declarative_base()
@@ -21,19 +22,20 @@ class Persons():
     __tablename__ = "allpersons"
     __mapper_args__ = {'polymorphic_identity': 'allpersons',
                        'polymorphic_on': 'personality'}
-    id = ""
-    created_at = ""
-    updated_at = ""
-    surname = ""
-    firstname = ""
-    middlename = ""
-    dob = ""
-    phone = ""
-    address = ""
-    church = ""
-    occupation = ""
-    sex = ""
-    image = ""
+    id = Column(String(30), unique=True, primary_key=True, nullable=False)
+    created_at = Column(DateTime, default=datetime.utcnow())
+    updated_at = Column(DateTime, unique=datetime.utcnow())
+    surname = Column(String(20), nullable=False)
+    firstname = Column(String(20), nullable=False)
+    middlename = Column(String(20))
+    dob = Column(DateTime, nullable=False)
+    phone = Column(String(15))
+    address = Column(Text)
+    church = Column(String(30))
+    occupation = Column(String(20))
+    sex = Column(String(5),
+                 CheckConstraint("sex IN ('Male', 'Female')"))
+    image = Column(String(30))
 
     def __init__(self, **kwargs):
         """creates the person instance from key word argument"""
