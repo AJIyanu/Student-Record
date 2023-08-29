@@ -16,12 +16,12 @@ class Course(Base):
     """Course class"""
 
     __tablename__  = "courses"
-    id = Column(String(30), unique=True, primary_key=True, nullable=False)
+    id = Column(String(60), unique=True, primary_key=True, nullable=False)
     session = Column(String(10))
     created_at = Column(DateTime, default=datetime.utcnow())
     lecturer_id = Column(ForeignKey("lecturers.id"))
     code = Column(String(10))
-    level = Column(Integer, CheckConstraint("level IN ('Certificate', 'Diploma', 'Advanced')"))
+    level = Column(String(15), CheckConstraint("level IN ('Certificate', 'Diploma', 'Advanced')"))
     semester = Column(Integer, CheckConstraint("semester <= 5"))
     unit = Column(Integer)
 

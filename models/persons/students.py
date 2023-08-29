@@ -11,7 +11,7 @@ class Student(Persons, Base):
     """Students class"""
     __tablename__ = "students"
     __mapper_args__ = {"polymorphic_identity": "student"}
-    id = Column(String(30), ForeignKey("allpersons.id"), unique=True, primary_key=True)
+    id = Column(String(60), ForeignKey("allpersons.id"), unique=True, primary_key=True)
     matric_no = Column(String(20))
     salvation = Column(Text)
     level = Column(String(10),

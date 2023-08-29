@@ -14,7 +14,7 @@ from sqlalchemy import Column, String, Text, DateTime, CheckConstraint
 
 Base = declarative_base()
 
-class Persons():
+class Persons(Base):
     """
     This class has all common attributes for all Persons
     """
@@ -22,7 +22,8 @@ class Persons():
     __tablename__ = "allpersons"
     __mapper_args__ = {'polymorphic_identity': 'allpersons',
                        'polymorphic_on': 'personality'}
-    id = Column(String(30), unique=True, primary_key=True, nullable=False)
+    personality = Column(String(15))
+    id = Column(String(60), unique=True, primary_key=True, nullable=False)
     created_at = Column(DateTime, default=datetime.utcnow())
     updated_at = Column(DateTime, unique=datetime.utcnow())
     surname = Column(String(20), nullable=False)
@@ -77,10 +78,12 @@ class Persons():
         """returns a dictionary representation of the class"""
         self_dict = {}
         self_dict.update(self.__dict__)
-        self_dict.update({'__class__': self.__class__.__name__})
+        self_dict.update({'__class__': str(self.__class__.__name__)})
         self_dict['created_at'] = self.created_at.isoformat()
         self_dict['updated_at'] = self.updated_at.isoformat()
         self_dict['dob'] = self.dob.isoformat()
+        if '_sa_instance_state' in self_dict:
+            self_dict.pop('_sa_instance_state')
         return self_dict
 
     def json_me(self):

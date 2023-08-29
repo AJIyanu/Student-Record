@@ -15,7 +15,7 @@ from ..persons.person import Base
 class Score(Base):
     """Score class"""
     __tablename__ = "score"
-    id = Column(String(30), unique=True, primary_key=True, nullable=False)
+    id = Column(String(60), unique=True, primary_key=True, nullable=False)
     session = Column(String(10))
     semester = Column(Integer, CheckConstraint("semester <= 5"))
     created_at = Column(DateTime, default=datetime.utcnow())
@@ -23,7 +23,7 @@ class Score(Base):
     lecturer_id = Column(String(30), ForeignKey("lecturers.id"))
     student_id = Column(String(30), ForeignKey("students.id"))
     course_code = Column(String(10))
-    level = Column(Integer, CheckConstraint("level IN ('Certificate', 'Diploma', 'Advanced')"))
+    level = Column(String(15), CheckConstraint("level IN ('Certificate', 'Diploma', 'Advanced')"))
     __unit = Column(Integer)
     __attendance = Column(Integer)
     __assignment = Column(Text) #json.dumps([{"mark obtained": 0, "mark obtainable": 10}])

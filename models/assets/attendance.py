@@ -15,8 +15,8 @@ from ..persons.person import Base
 class Attendance(Base):
     """Attendance class"""
 
-    __tablename___ = "attendance"
-    id = Column(String(30), primary_key=True, unique=True, nullable=False)
+    __tablename__ = "attendance"
+    id = Column(String(60), primary_key=True, unique=True, nullable=False)
     session = Column(String(10))
     created_at = Column(DateTime, default=datetime.utcnow())
     student_id = Column(String(30), ForeignKey("students.id"))

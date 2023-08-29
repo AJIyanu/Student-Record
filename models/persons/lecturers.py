@@ -10,7 +10,7 @@ class Lecturer(Persons, Base):
     """Lecturers class"""
     __tablename__ = "lecturers"
     __mapper_args__ = {"polymorphic_identity": "lecturer"}
-    id = Column(String(30), ForeignKey("allpersons.id"), unique=True, primary_key=True)
+    id = Column(String(60), ForeignKey("allpersons.id"), unique=True, primary_key=True)
     staff_no = Column(String(15))
 
     def __init__(self, **kwargs):
