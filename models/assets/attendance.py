@@ -14,7 +14,7 @@ class Attendance:
     """Attendance class"""
     id = ""
     session = ""
-    date = ""
+    created_at = ""
     student_id = ""
     status = ""
     offering = ""
@@ -26,14 +26,14 @@ class Attendance:
             self.id = str(uuid4())
         else:
             self.id = kwargs.pop("id")
-        if "date" not in kwargs:
-            self.date = datetime.now()
+        if "created_at" not in kwargs:
+            self.created_at = datetime.now()
         else:
-            date = kwargs.pop("date")
+            date = kwargs.pop("created_at")
             try:
-                self.date = datetime.strptime(date, "%Y-%m-%dT%H:%M:%S.%f")
+                self.created_at = datetime.strptime(date, "%Y-%m-%dT%H:%M:%S.%f")
             except TypeError:
-                self.date = date
+                self.created_at = date
         kwargs.pop("status", None)
         self.status = False
         for key, value in kwargs.items():
@@ -44,7 +44,7 @@ class Attendance:
         self_dict = {}
         self_dict.update(self.__dict__)
         self_dict.update({'__class__': self.__class__.__name__})
-        self_dict['created_at'] = self.date.isoformat()
+        self_dict['created_at'] = self.created_at.isoformat()
         return self_dict
 
     def json_me(self):

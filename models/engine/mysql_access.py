@@ -2,7 +2,7 @@
 """database storage"""
 
 
-from sqlalchemy import create_engine
+from sqlalchemy import create_engine, desc
 from sqlalchemy.orm import sessionmaker, scoped_session
 from sqlalchemy.orm.exc import NoResultFound
 
@@ -84,3 +84,12 @@ class MySQLStorage:
     def close(self):
         """closes session"""
         self.__session.remove()
+
+    def find(self, obj, **kwargs):
+        """returns a list of abj according to kwargs"""
+        classes = self.classes
+        if obj in classes:
+            obj = classes.get(obj)
+        if obj in classes.values():
+            results = self.__session.query(obj).filter_by(**kwargs).order_by(desc(obj.created_at))
+            return [result for result in results.all()]
