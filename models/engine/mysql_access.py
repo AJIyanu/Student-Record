@@ -2,17 +2,20 @@
 """database storage"""
 
 
+from importlib import import_module
+
 from sqlalchemy import create_engine, desc
 from sqlalchemy.orm import sessionmaker, scoped_session
 from sqlalchemy.orm.exc import NoResultFound
 
-from models.persons.person import Persons, Base
-from models.persons.admin import Admin
-from models.persons.lecturers import Lecturer
-from models.persons.students import Student
-from models.assets.attendance import Attendance
-from models.assets.scores import Score
-from models.assets.courses import Course
+from models.persons.person import Base
+# from models.persons.admin import Admin
+# from models.persons.lecturers import Lecturer
+# from models.persons.students import Student
+# from models.assets.attendance import Attendance
+# from models.assets.scores import Score
+# from models.assets.courses import Course
+# from models.persons.auth import Auth
 
 
 class MySQLStorage:
@@ -21,13 +24,14 @@ class MySQLStorage:
     __session = None
 
     classes = {
-                "Persons": Persons,
-                "Admin": Admin,
-                "Lecturer": Lecturer,
-                "Student": Student,
-                "Attendance": Attendance,
-                "Score": Score,
-                "Course": Course
+                "Persons": import_module("models.persons.person").Persons,
+                "Admin": import_module("models.persons.admin").Admin,
+                "Lecturer": import_module("models.persons.lecturers").Lecturer,
+                "Student": import_module("models.persons.students").Student,
+                "Attendance": import_module("models.assets.attendance").Attendance,
+                "Score": import_module("models.assets.scores").Score,
+                "Course": import_module("models.assets.courses").Course,
+                "Auth": import_module("models.persons.auth").Auth
         }
 
     def __init__(self):
@@ -36,7 +40,7 @@ class MySQLStorage:
         pwd = "mesacot"
         db = "Student_Record"
         host = "localhost"
-        url = "{}:{}@{}/{}".format(usr, pwd, host, db)
+        url = f"{usr}:{pwd}@{host}/{db}"
         self.__engine = create_engine("mysql+mysqlconnector://{}".format(url),
                                       pool_size=10, pool_pre_ping=True)
 
@@ -68,9 +72,9 @@ class MySQLStorage:
         """returns all objects or all specifics"""
         classes = self.classes
         obj_dicts = {}
-        for item in classes:
-            if obj is None or obj == item or type(obj) == classes[item]:
-                clss = self.__session.query(classes[item]).all()
+        for string, clss in classes.items():
+            if obj is None or obj == string or isinstance(obj, clss):
+                clss = self.__session.query(clss).all()
             else:
                 continue
             for objects in clss:
@@ -91,5 +95,9 @@ class MySQLStorage:
         if obj in classes:
             obj = classes.get(obj)
         if obj in classes.values():
-            results = self.__session.query(obj).filter_by(**kwargs).order_by(desc(obj.created_at))
-            return [result for result in results.all()]
+            try:
+                res = self.__session.query(obj).filter_by(**kwargs).order_by(desc(obj.created_at))
+            except NoResultFound:
+                return []
+            return res.all()
+        return []
