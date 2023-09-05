@@ -1,0 +1,235 @@
+header {
+    margin-top: 0%;
+    margin-left: 0%;
+    padding-left: 3%;
+    height: 35px;
+    color: white;
+    background-color: black;
+    font-size: small;
+    padding-top: 1px;
+}
+
+body {
+    position: relative;
+    margin: 0;
+    padding: 0;
+}
+
+.bible-container {
+    background-image: url(../images/home_bg.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin-top: 0%;
+    padding: 5pt;
+    padding-left: 25pt;
+    height: 500pt;
+}
+
+#name {
+    font-size: 4rem;
+    font-family: Bebas Neue;
+    letter-spacing: 2pt;
+    line-height: 40pt;
+    color: rgb(243, 234, 221);
+}
+
+.courses {
+    margin-top: 350px;
+    display: flex;
+    justify-content: center;
+}
+
+.about-us {
+    font-size: 1.1rem;
+    font-family: 'Arial Narrow';
+    text-align: justify;
+    position: relative;
+    height: 430pt;
+    background-color: rgb(201, 237, 241);
+    display: flex;
+    padding-top: 180pt;
+    padding-left: 30%;
+    padding-right: 2%;
+    z-index: -999;
+}
+
+.about-us img {
+    position: absolute;
+    bottom: 0;
+    left: 0%;
+}
+
+#about-us p {
+    margin-top: 0pt;
+}
+
+#about-us h4, h1 {
+    margin-bottom: 0pt;
+}
+
+.form {
+    position: absolute;
+    top: 8%;
+    right: 4%;
+    height: 300pt;
+    width: 250pt;
+    border-radius: 30px;
+    background-color: rgb(255, 246, 233);
+    box-shadow: -2px 4px 10px #000000de;
+    /* padding-top: 60pt; */
+    padding-left: 20pt;
+    align-content: center;
+}
+
+.sign-in {
+    display: none;
+    height: 200pt;
+    padding-top: 80pt;
+}
+
+.sign-in input {
+    padding-left: 40pt;
+    padding-bottom: 0%;
+    font-size: 1.5rem;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    outline: none;
+    background: transparent;
+    width: 75%;
+    height: 30pt;
+    /* text-align: right; */
+    margin-bottom: 30pt;
+    margin-left: -25pt;
+}
+
+.get-started label {
+    margin-left: 7pt;
+}
+
+.get-started input, .get-started select {
+    width: 190pt;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    outline: none;
+    background-color: transparent;
+    padding-bottom: 0%;
+    padding-top: 3%;
+    margin-bottom: 15pt;
+    font-size: 1.2rem;
+    margin-left: 7pt;
+}
+
+#submit-btn {
+    width: 90%;
+    height: 30pt;
+    border-radius: 8pt;
+    border: none;
+    background-color: rgb(204, 136, 10);
+    box-shadow: 0px 1px 3px black;
+}
+
+.show-form {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+    right: 16%;
+    top: 6%;
+    height: 50pt;
+    width: 50pt;
+    border-radius: 50%;
+    background-color: rgb(252, 219, 169);
+    box-shadow: 1px 1px 8px black;
+}
+
+#flexme {
+    display: flex;
+}
+
+.get-started {
+    display: none;
+    padding-top: 50pt;
+}
+
+.box {
+    /* flex: 1; */
+    position: relative;
+    height: 250pt;
+    width: 240pt;
+    margin: 20pt;
+    border-radius: 10pt;
+    box-shadow: 5px 5px 10px #00000093;
+    background-color: bisque;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.box button {
+    position: absolute;
+    bottom: 20pt;
+    margin-left: 25%;
+    width: 50%;
+    height: 30pt;
+    border-radius: 5pt;
+    border: none;
+    background-color: rgb(39, 19, 2);
+    box-shadow: 1pt 1pt 3pt rgba(0, 0, 0, 0.829);
+    color: antiquewhite;
+}
+
+.box h3 {
+    font-size: 2.5rem;
+    text-align: center;
+    font-family: Bebas Neue;
+    letter-spacing: 2pt;
+    color: rgb(27, 15, 0);
+    margin-bottom: 0%;
+}
+
+.box ul {
+    margin: 10pt;
+    text-align: justify;
+    margin-right: 30pt;
+    margin-bottom: 15pt;
+}
+
+footer {
+    background-color: rgb(37, 22, 1);
+    margin-top: -20pt;
+    height: 300pt;
+    color: aliceblue;
+    display: flex;
+    padding-left: 10%;
+    padding-top: 2%;
+}
+
+footer a {
+    text-decoration-line: none;
+    text-decoration-color: none;
+    color: aliceblue;
+}
+
+#contact-us a {
+    margin-top: 3%;
+    display: list-item;
+    list-style-position: outside;
+    margin-left: 10pt;
+    list-style: none;
+    /* background-color: #da020293; */
+}
+
+#social-media {
+    margin-top: 5pt;
+    display: flex;
+    list-style: none;
+}
+
+#services {
+    margin-left: 17%;
+}
+
+#design-info {
+    margin-left: 19%;
+}
