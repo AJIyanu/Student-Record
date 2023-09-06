@@ -5,6 +5,8 @@ This module also has the Base for sqlaclhemy to create tables
 """
 
 
+from importlib import import_module
+
 from uuid import uuid4
 import json
 from datetime import datetime
@@ -57,20 +59,19 @@ class Persons(Base):
                 pass
         if "dob" not in kwargs:
             raise AttributeError("Date of Birth not present")
-        else:
-            dob = kwargs.pop("dob")
-            try:
-                self.dob = datetime.strptime(dob, "%Y-%m-%d")
-            except TypeError:
-                self.dob = dob
+        dob = kwargs.pop("dob")
+        try:
+            self.dob = datetime.strptime(dob, "%Y-%m-%d")
+        except TypeError:
+            self.dob = dob
         for key, value in kwargs.items():
             setattr(self, key, value)
-        from models import vault
+        vault = import_module("models").vault
         vault.new(self)
 
     def save_me(self):
         """adds update to database"""
-        from models import vault
+        vault = import_module("models").vault
         self.updated_at = datetime.now()
         vault.save()
 
@@ -89,3 +90,13 @@ class Persons(Base):
     def json_me(self):
         """returns a json representation of self"""
         return json.dumps(self.to_dict())
+
+    @classmethod
+    def find_me(cls, id):
+        """returns the user class"""
+        vault = import_module("models").vault
+        try:
+            me = vault.find(cls, id=id)[0]
+        except IndexError:
+            return
+        return me

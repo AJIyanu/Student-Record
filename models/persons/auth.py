@@ -8,7 +8,7 @@ to access data by users on the database
 import time
 from importlib import import_module
 
-from uuid import uuid4
+# from uuid import uuid4
 import json
 from datetime import datetime, timedelta
 from sqlalchemy import Column, String, ForeignKey, DateTime

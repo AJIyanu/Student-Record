@@ -7,7 +7,7 @@ from os import getenv
 
 from flask_jwt_extended import JWTManager, get_jwt, create_access_token
 from flask_jwt_extended  import set_access_cookies, get_jwt_identity
-from flask import Flask, jsonify, send_file, request
+from flask import Flask, jsonify, send_file #, request
 
 from flask_paths import app_views
 
@@ -56,19 +56,19 @@ def favicon():
 def not_found(error) -> str:
     """ Not found handler
     """
-    return jsonify({"error": "Not found"}), 404
+    return jsonify({"error": "Not found", "err": error}), 404
 
 
 @app.errorhandler(401)
 def not_authorized(error) -> str:
     """handling unauthorized shits"""
-    return jsonify({"error": "Unauthorized"}), 401
+    return jsonify({"error": "Unauthorized", "err": error}), 401
 
 
 @app.errorhandler(403)
 def forbidden(error) -> str:
     """authorized but not aloowed"""
-    return jsonify({"error": "Forbidden"}), 403
+    return jsonify({"error": "Forbidden", "err": error}), 403
 
 if __name__ == "__main__":
     host = getenv("WEBDOC_HOST", "0.0.0.0")
