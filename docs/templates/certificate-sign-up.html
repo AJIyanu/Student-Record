@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.1" name="viewport">
+    <meta content="Message of Salvation College of Theology offers Certificate, Diploma and Advanced Diploma in the study of the Bible from trained and Spirit filled Lecturers. Learn the Bible in a way applicable to your life" name="description">
+    <meta content="Bible, School, Theology, Holy Spirit, Truth, Free" name="keywords">
+
+    <title>Certificate Registration Form</title>
+    <!-- <link rel="icon" href="./static/images/favicon.ico" type="image/x-icon"> -->
+
+    <!-- css -->
+    <link rel="stylesheet" href="../static/styles/registration-form.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+    <!-- fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bebas+Neue|Shadows+Into+Light">
+
+</head>
+<body>
+    <h1 class="form-heading">CERTIFICATE COURSE REGISTRATION FORM</h1>
+    <section class="registration-outer-container">
+        <div class="registration-form-inner-container">
+            <form action="/register/certificate" method="post" class="form">
+                <div id="switch-level">
+                    <h3 class="change-level">Not Certificate?</h3>
+                    <label for="change-level"><h3>Change Level</h3></label>
+                    <select name="change-level" id="change-level">
+                        <option value="certificate">Certificate</option>
+                        <option value="diploma">Diploma</option>
+                        <option value="advanced">Advanced</option>
+                    </select>
+                </div>
+                <div class="flexme">
+                    <label for="surname">Surname</label>
+                    <input type="text" id="surnanme" name="surname" style="width: 33%">
+                    <label for="firstname">Firstname</label>
+                    <input type="text" name="firstname" id="firstname" style="width: 33%">
+                </div>
+                <div class="flexme">
+                    <label for="middlename">Middlename</label>
+                    <input type="text" name="middlename" id="middlename" style="width: 30%">
+                    <label for="sex">Sex</label>
+                    <select name="sex" id="sex" style="width: 13%">
+                        <option value="nill" disabled selected>--</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="none">Prefer not to say</option>
+                    </select>
+                    <label for="dob">DOB</label>
+                    <input type="date" name="dob" id="dob">
+                </div>
+                <div class="flexme">
+                    <label for="nok">Next of Kin</label>
+                    <input type="text" name="nok" id="nok" placeholder="Surname    Firstname    Middlename" style="width: 80%">
+                </div>
+                <div class="flexme">
+                    <Label for="nationality">Nationality</Label>
+                    <select name="nationality" id="nationality" style="width: 15%">
+                        <option value="Nigeria" selected>Nigeria</option>
+                    </select>
+                    <label for="state">State of Origin</label>
+                    <select name="state" id="state" style="width: 15%">
+                        <option value="">Oyo</option>
+                    </select>
+                    <label for="lga">LGA</label>
+                    <select name="lga" id="lga" style="width: 25%">
+                        <option value="">Oluyole</option>
+                    </select>
+                </div>
+                <div class="flexme">
+                    <label for="address">Residential Address</label>
+                    <textarea name="address" id="address" cols="72" style="height: 40pt; margin-bottom: -20pt;" ></textarea>
+                </div>
+                <div class="flexme">
+                    <label for="church-address">Church Address</label>
+                    <textarea name="church-address" id="church-address" cols="72" style="height: 40pt; margin-bottom: -10pt;"></textarea>
+                </div>
+                <div class="flexme">
+                    <label for="phone">Phone 1</label>
+                    <select name="country-code" id="country-code" style="width: 9%; padding-left: 0pt;">
+                        <option value="+234">+234</option>
+                    </select>
+                    <input type="number" name="phone" id="phone1" style="width: 24%; margin-left: -10pt;">
+                    <label for="phone2">Phone 2</label>
+                    <select name="country-code" id="country-code" style="width: 9%; padding-left: 0pt;">
+                        <option value="+234">+234</option>
+                    </select>
+                    <input type="number" name="phone2" id="phone2" style="width: 25%; margin-left: -10pt;">
+                </div>
+                <div class="flexme">
+                    <label for="education">Educational Qualification</label>
+                    <select name="education" id="education" style="width: 21%;">
+                        <option value="degree">Degree</option>
+                        <option value="diploma">Diploma</option>
+                        <option value="nce">NCE</option>
+                        <option value="olevel">"O" Level</option>
+                        <option value="none" selected>None</option>
+                    </select>
+                    <label for="occupation">Occupation</label>
+                    <input type="text" id="occupation" name="occupation">
+                </div>
+                <div class="flexme">
+                    <button type="submit">SAVE</button>
+                    <button>EXIT</button>
+                </div>
+            </form>
+            <form action="" class="form active">
+                <label for="image">Profile Picture</label>
+                <input type="file">
+                <label for="salvation">Salvation Experience</label>
+                <textarea name="salvation" id="salvation" cols="30" rows="10"></textarea>
+                <label for="motivation">Why did you want to join</label>
+                <textarea name="motivation" id="motivation" cols="30" rows="10"></textarea>
+            </form>
+        </div>
+    </section>
+    <footer style="height: 100px;"></footer>
+</body>
