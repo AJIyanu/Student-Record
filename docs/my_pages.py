@@ -7,7 +7,7 @@ from os import getenv
 
 from flask_jwt_extended import JWTManager, get_jwt, create_access_token
 from flask_jwt_extended  import set_access_cookies, get_jwt_identity
-from flask import Flask, jsonify, send_file #, request
+from flask import Flask, jsonify, send_file, render_template
 
 from flask_paths import app_views
 
@@ -50,6 +50,11 @@ def handle_before():
 def favicon():
     """returns favicon"""
     return send_file("favicon_light.ico")
+
+@app.route("/", methods=["GET"])
+def index_page():
+    """returns the index page"""
+    return render_template("index.html")
 
 
 @app.errorhandler(404)

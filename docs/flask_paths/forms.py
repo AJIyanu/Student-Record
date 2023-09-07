@@ -48,3 +48,10 @@ def login():
 def registeration_form(level):
     """returns registration form"""
     return render_template(f"{level}-sign-up.html")
+
+
+@app_views.route("/get-started", methods=["POST"])
+def register_new_user():
+    """registers a new user"""
+    details = request.form
+    return jsonify(received=details)
