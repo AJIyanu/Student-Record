@@ -3,7 +3,7 @@
 Route module for web pages
 """
 from datetime import timedelta, datetime, timezone
-from os import getenv
+from os import getenv, symlink, getcwd
 
 from flask_jwt_extended import JWTManager, get_jwt, create_access_token
 from flask_jwt_extended  import set_access_cookies, get_jwt_identity
@@ -22,6 +22,8 @@ app.config['JWT_SECRET_KEY'] = 'roseismysecretekey'
 jwt = JWTManager(app)
 
 
+print(get_jwt())
+symlink("templates/index.html", "index.html")
 
 @app.after_request
 def refresh_expiring_jwts(response):
