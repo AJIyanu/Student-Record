@@ -22,8 +22,12 @@ app.config['JWT_SECRET_KEY'] = 'roseismysecretekey'
 jwt = JWTManager(app)
 
 
-print(get_jwt())
-symlink("templates/index.html", "index.html")
+print(getcwd())
+try:
+    symlink("docs/index.html", "docs/templates/index.html")
+except FileExistsError:
+    pass
+
 
 @app.after_request
 def refresh_expiring_jwts(response):
