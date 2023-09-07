@@ -11,8 +11,9 @@ from flask_paths import app_views
 from flask import render_template, request, redirect, jsonify
 from flask import make_response
 
-sys.path.insert(0, 'C:\\Users\\adere\\Documents\\GitHub\\AJIyanu\\Mesacot\\Student Record')
 # print(sys.path)
+sys.path.insert(0, 'C:\\Users\\adere\\Documents\\GitHub\\AJIyanu\\Mesacot\\Student Record')
+sys.path.insert(0, '/home/ajiyanu/aj_project/Student-Record/')
 Auth = import_module("models.persons.auth").Auth
 Persons = import_module("models.persons.person").Persons
 Student = import_module("models.persons.students").Student
