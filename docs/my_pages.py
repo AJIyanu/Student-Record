@@ -55,6 +55,8 @@ def favicon():
 @app.route("/", methods=["GET"])
 def index_page():
     """returns the index page"""
+    if name == "nt":
+        return render_template("index_win.html")
     return render_template("index.html")
 
 
