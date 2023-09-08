@@ -18,15 +18,16 @@ app.config['TEMPLATES_AUTO_RELOAD'] = True
 app.config['SECRET_KEY'] = 'roseismysecretkey'
 app.config["JWT_TOKEN_LOCATION"] = ["cookies", "headers"]
 app.config['JWT_ACCESS_TOKEN_EXPIRES'] = timedelta(hours=2)
+app.config['FOLLOW_SYMLINKS'] = True
 app.config['JWT_SECRET_KEY'] = 'roseismysecretekey'
 jwt = JWTManager(app)
 
 
 print(getcwd())
-try:
-    symlink("docs/index.html", "docs/templates/index.html")
-except FileExistsError:
-    pass
+#try:
+#    symlink("docs/index.html", "docs/templates/index.html")
+#except FileExistsError:
+#    pass
 
 
 @app.after_request
