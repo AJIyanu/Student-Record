@@ -47,3 +47,23 @@ getStarted.forEach((button, index) => {
         labelIcon.scrollIntoView({behavior: "smooth"});
     })
 })
+
+const confirm_pwd = document.getElementById("confirm-password");
+const pwd = document.getElementById("password2");
+const submit = document.getElementById("submit-btn2");
+
+
+confirm_pwd.addEventListener("input", (event) => {
+    if (confirm_pwd.value !== pwd.value) {
+        confirm_pwd.style.backgroundColor = "rgba(255, 0, 0, 0.252)";
+    } else {
+        confirm_pwd.style.backgroundColor = "rgba(30, 255, 0, 0.363)";
+    }
+})
+
+
+submit.addEventListener("click", (e) => {
+    if (confirm_pwd.value !== pwd.value) {
+        e.preventDefault()
+    }
+})

@@ -14,11 +14,11 @@ class Student(Persons, Base):
     id = Column(String(60), ForeignKey("allpersons.id"), unique=True, primary_key=True)
     matric_no = Column(String(20))
     salvation = Column(Text)
-    level = Column(String(10),
+    level = Column(String(15),
                    CheckConstraint("level IN ('Certificate', 'Diploma', 'Advanced')"))
     status = Column(String(15),
                     CheckConstraint("status IN\
-('Prospective', 'Admitted', 'Withdrawn', 'Reactivated', 'Graduated')"))
+('Prospective', 'Saved', 'Admitted', 'Withdrawn', 'Reactivated', 'Graduated')"))
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)

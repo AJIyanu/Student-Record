@@ -121,7 +121,7 @@ body {
     margin-left: 7pt;
 }
 
-#submit-btn {
+#submit-btn, #submit-btn2 {
     width: 90%;
     height: 30pt;
     border-radius: 8pt;

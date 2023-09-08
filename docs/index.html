@@ -104,23 +104,23 @@
         </form>
     </section>
     <section class="form get-started">
-        <form action="#contact-us" method="post">
+        <form action="http://127.0.0.1:5000/get-started" method="post">
             <div id="flexme">
                 <!-- <i class="bi-person"></i> -->
                 <label for="surname"><i class="bi-person-fill" style="font-size: 2rem;"></i></label>
-                <input type="text" id="surname" placeholder="Surname">
+                <input type="text" name="surname" id="surname" placeholder="Surname">
             </div>
             <div id="flexme">
                 <label for="firstname"><i class="bi-person-fill-add" style="font-size: 2rem;"></i></style></label>
-                <input type="text" id="firstname" placeholder="Firstname">
+                <input type="text" name="firstname" id="firstname" placeholder="Firstname">
             </div>
             <div id="flexme">
                 <label for="email"><i class="bi-envelope-at-fill" style="font-size: 2rem;"></i></label>
-                <input type="email" id="email" placeholder="Email">
+                <input type="email" name="email" id="email" placeholder="Email">
             </div>
             <div id="flexme">
                 <label for="password"><i class="bi-key" style="font-size: 2rem;"></i></label>
-                <input type="password" id="password" placeholder="Password">
+                <input type="password" name="password" id="password2" placeholder="Password">
             </div>
             <div id="flexme">
                 <label for="confirm-password"><i class="bi-lock-fill" style="font-size: 2rem;"></i></label>
@@ -129,12 +129,12 @@
             <div id="flexme">
                 <label for="level"><i class="bi-graph-up-arrow" style="font-size: 2rem;"></i></label>
                 <select name="level" id="level">
-                    <option value="certificate">Certificate</option>
-                    <option value="diploma">Diploma</option>
-                    <option value="advanced">Advanced</option>
+                    <option value="Certificate">Certificate</option>
+                    <option value="Diploma">Diploma</option>
+                    <option value="Advanced">Advanced</option>
                 </select>
             </div>
-            <button type="submit" id="submit-btn">Get Started</button>
+            <button type="submit" id="submit-btn2">Get Started</button>
         </form>
     </section>
     <footer>
