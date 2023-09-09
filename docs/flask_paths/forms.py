@@ -13,6 +13,9 @@ from flask import make_response
 from flask_jwt_extended import (set_access_cookies, create_access_token,
                                 get_jwt_identity, jwt_required)
 
+from .methods import add_student_info
+
+
 
 # print(sys.path)
 sys.path.insert(0, 'C:\\Users\\adere\\Documents\\GitHub\\AJIyanu\\Mesacot\\Student Record')
@@ -58,7 +61,6 @@ def registeration_form(level):
     if request.method == "GET":
         return render_template(f"{level}-sign-up.html")
     details = request.form
-    from .methods import add_student_info
     add_student_info("2023", "certificate", {"id": "22", "user": details})
     return jsonify(details=details)
 

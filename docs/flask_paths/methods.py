@@ -14,11 +14,13 @@ def add_student_info(session: str, level:str, student_dict:dict=None):
     if student_dict is None:
         student_dict = {}
     filename = f"storage/student-other-info/{level}-{session}.json"
-    with open(filename, "w+", encoding="utf8") as file:
+    with open(filename, "r+", encoding="utf8") as file:
         try:
-            datas = json.loads(file.readline())
+            datas = json.load(file)
+            print("found", datas)
         except json.JSONDecodeError:
             datas = {}
+    with open(filename, "w+", encoding="utf8") as file:
         if student_dict.get("id") in datas:
             datas[student_dict.get("id")] = student_dict
         else:

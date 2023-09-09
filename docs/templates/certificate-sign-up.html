@@ -11,13 +11,15 @@
     <!-- css -->
     <link rel="stylesheet" href="../static/styles/registration-form.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.0/cropper.min.css" integrity="sha512-gNSHyKCA9X3fCDdTd5UxyNaSznSyGtR9pwf5YwSp7haDRz6Gqor0nY20POCYLseXq5n/FGAEogNp7G0d56d3jg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"/> -->
 
     <!-- fonts -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bebas+Neue|Shadows+Into+Light">
 
 </head>
 <body>
-    <h1 class="form-heading">CERTIFICATE COURSE REGISTRATION FORM</h1>
+    <h1 class="my-form-heading">CERTIFICATE COURSE REGISTRATION FORM</h1>
     <section class="registration-outer-container">
         <div class="registration-form-inner-container">
             <form action="/register/certificate" method="post" class="form  active">
@@ -102,7 +104,7 @@
             </form>
             <form action="/register/certificate" method="post" class="form2">
                 <div id="pp-outer">
-                    <img src="../static/images/passports/provost.jpg" alt="passport">
+                    <img src="../static/images/passports/provost.jpg" alt="passport" id="dp">
                     <div id="pp-div-passport">
                         <label for="pp-image">Upload Picture</label>
                         <input type="file" id="pp-image" accept="image/jpeg, image/png, image/jpg" style="display: none;">
@@ -154,6 +156,55 @@
             </form>
         </div>
     </section>
+
+    <!-- <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalLabel">Crop image</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="img-container">
+                        <div class="row">
+                            <div class="col-md-8">
+                                 default image where we will set the src via jquery
+                                <img id="image">
+                            </div>
+                            <div class="col-md-4">
+                                <div class="preview"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" id="crop">Crop</button>
+                </div>
+            </div>
+        </div>
+    </div> -->
+
+    <section id="dp-crop">
+        <!-- show something -->
+        <div class="dp-img" style="display: flex;">
+            <div class="original-upload">
+                <img src="../static/images/home_bg.jpg" alt="crop me" width="350" id="cropmehere">
+            </div>
+            <div class="cropped-upload" style="margin-top: 100pt;">
+                <!-- <img src="../static/images/home_bg.jpg" alt="croppped me" width="160"> -->
+            </div>
+        </div>
+        <div class="crop-buttons">
+            <button id="done">Done</button>
+            <button id="cancel">Cancel</button>
+        </div>
+    </section>
+
     <footer style="height: 100px;"></footer>
 </body>
 <script src="../static/scripts/stateslga.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.0/cropper.min.js" integrity="sha512-7C1FbUL8fX5IKwBEHEjwyyGssfSOKms2NQbMj3GYdeQTr4Xmbrk/q/4eqcDuROAbJwT71ATVpVIUiaeMnNqq/Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="../static/scripts/cropdpupload.js"></script>

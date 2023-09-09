@@ -18,7 +18,7 @@ app.config['TEMPLATES_AUTO_RELOAD'] = True
 app.config['SECRET_KEY'] = 'roseismysecretkey'
 app.config["JWT_TOKEN_LOCATION"] = ["cookies", "headers"]
 app.config['JWT_ACCESS_TOKEN_EXPIRES'] = timedelta(hours=2)
-app.config['JWT_CSRF_METHODS'] = ['GET', 'PUT', 'PATCH', 'DELETE']
+app.config['JWT_CSRF_METHODS'] = ['PUT', 'PATCH', 'DELETE']
 app.config['FOLLOW_SYMLINKS'] = True
 app.config['JWT_SECRET_KEY'] = 'roseismysecretekey'
 jwt = JWTManager(app)
