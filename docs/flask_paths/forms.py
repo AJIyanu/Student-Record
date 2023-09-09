@@ -55,7 +55,12 @@ def login():
 @jwt_required()
 def registeration_form(level):
     """returns registration form"""
-    return render_template(f"{level}-sign-up.html")
+    if request.method == "GET":
+        return render_template(f"{level}-sign-up.html")
+    details = request.form
+    from .methods import add_student_info
+    add_student_info("2023", "certificate", {"id": "22", "user": details})
+    return jsonify(details=details)
 
 
 @app_views.route("/get-started", methods=["POST"])

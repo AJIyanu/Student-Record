@@ -18,6 +18,7 @@ app.config['TEMPLATES_AUTO_RELOAD'] = True
 app.config['SECRET_KEY'] = 'roseismysecretkey'
 app.config["JWT_TOKEN_LOCATION"] = ["cookies", "headers"]
 app.config['JWT_ACCESS_TOKEN_EXPIRES'] = timedelta(hours=2)
+app.config['JWT_CSRF_METHODS'] = ['GET', 'PUT', 'PATCH', 'DELETE']
 app.config['FOLLOW_SYMLINKS'] = True
 app.config['JWT_SECRET_KEY'] = 'roseismysecretekey'
 jwt = JWTManager(app)
@@ -64,19 +65,19 @@ def index_page():
 def not_found(error) -> str:
     """ Not found handler
     """
-    return jsonify({"error": "Not found", "err": error}), 404
+    return jsonify({"error": "Not found", "err": str(error)}), 404
 
 
 @app.errorhandler(401)
 def not_authorized(error) -> str:
     """handling unauthorized shits"""
-    return jsonify({"error": "Unauthorized", "err": error}), 401
+    return jsonify({"error": "Unauthorized", "err": str(error)}), 401
 
 
 @app.errorhandler(403)
 def forbidden(error) -> str:
     """authorized but not aloowed"""
-    return jsonify({"error": "Forbidden", "err": error}), 403
+    return jsonify({"error": "Forbidden", "err": str(error)}), 403
 
 if __name__ == "__main__":
     host = getenv("WEBDOC_HOST", "0.0.0.0")

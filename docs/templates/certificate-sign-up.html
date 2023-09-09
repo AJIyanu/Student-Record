@@ -20,7 +20,7 @@
     <h1 class="form-heading">CERTIFICATE COURSE REGISTRATION FORM</h1>
     <section class="registration-outer-container">
         <div class="registration-form-inner-container">
-            <form action="/register/certificate" method="post" class="form">
+            <form action="/register/certificate" method="post" class="form  active">
                 <div id="switch-level">
                     <h3 class="change-level">Not Certificate?</h3>
                     <label for="change-level"><h3>Change Level</h3></label>
@@ -59,13 +59,9 @@
                         <option value="Nigeria" selected>Nigeria</option>
                     </select>
                     <label for="state">State of Origin</label>
-                    <select name="state" id="state" style="width: 15%">
-                        <option value="">Oyo</option>
-                    </select>
+                    <select name="state" id="states" style="width: 15%"></select>
                     <label for="lga">LGA</label>
-                    <select name="lga" id="lga" style="width: 25%">
-                        <option value="">Oluyole</option>
-                    </select>
+                    <select name="lga" id="lgas" style="width: 25%"></select>
                 </div>
                 <div class="flexme">
                     <label for="address">Residential Address</label>
@@ -104,15 +100,60 @@
                     <button>EXIT</button>
                 </div>
             </form>
-            <form action="" class="form active">
-                <label for="image">Profile Picture</label>
-                <input type="file">
-                <label for="salvation">Salvation Experience</label>
-                <textarea name="salvation" id="salvation" cols="30" rows="10"></textarea>
-                <label for="motivation">Why did you want to join</label>
-                <textarea name="motivation" id="motivation" cols="30" rows="10"></textarea>
+            <form action="/register/certificate" method="post" class="form2">
+                <div id="pp-outer">
+                    <img src="../static/images/passports/provost.jpg" alt="passport">
+                    <div id="pp-div-passport">
+                        <label for="pp-image">Upload Picture</label>
+                        <input type="file" id="pp-image" accept="image/jpeg, image/png, image/jpg" style="display: none;">
+                    </div>
+                </div>
+                <div style="margin-top: -60pt;">
+                <label for="salvation?">Have you been saved? </label>
+                <select name="salvation-bool" id="salvation?">
+                    <option value="True">Yes</option>
+                    <option value="False" selected>No</option>
+                </select>
+                </div>
+                <div>
+                <label for="baptism?">Have you been baptized? </label>
+                <select name="baptism-bool" id="baptism?">
+                    <option value="True">Yes</option>
+                    <option value="False" selected>No</option>
+                </select>
+                </div>
+                <div>
+                <label for="holy-spirit?">Have you been baptized by the Holy Spirit? </label>
+                <select name="spirit-bool" id="holy-spirit?">
+                    <option value="True">Yes</option>
+                    <option value="False" selected>No</option>
+                </select>
+                </div>
+                <div>
+                    <label for="salvation">Brief your Salvation Experience</label>
+                    <textarea name="salvation" id="salvation" cols="30" rows="10"></textarea>
+                </div>
+                <div>
+                    <label for="motivation">Why did you want to join</label>
+                    <textarea name="motivation" id="motivation" cols="30" rows="10"></textarea>
+                </div>
+                <div>
+                    <label for="worker?">Have you been working for God? </label>
+                    <select name="worker-bool" id="worker?">
+                        <option value="True">Yes</option>
+                        <option value="False" selected>No</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="worker">What is your role in the Church?</label>
+                    <input type="text" value="None" style="width: 55%; height: 20pt;">
+                </div>
+                <div class="flexme" style="display: flex; align-items: center; margin-left: -10%;">
+                    <button type="submit">Save</button>
+                </div>
             </form>
         </div>
     </section>
     <footer style="height: 100px;"></footer>
 </body>
+<script src="../static/scripts/stateslga.js"></script>

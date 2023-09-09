@@ -22,7 +22,7 @@ body {
 
 .registration-form-inner-container {
     background-color: rgba(235, 255, 255, 0.555);
-    height: 700px;
+    /* height: 700px; */
     width: 800px;
     justify-self: center;
     align-self: center;
@@ -77,12 +77,70 @@ body {
 }
 
 .flexme button {
-    border-radius: 3pt;
+    border-radius: 5pt;
     width: 35%;
     height: 25pt;
-    margin-left: 20pt;
 }
 
 .active {
     display: none;
+}
+
+.form2 {
+    padding-top: 7%;
+    padding-bottom: 5%;
+    padding-left: 8%;
+    display: block;
+}
+
+.form2 label {
+    font-family: Tahoma;
+    font-weight: bold;
+    margin-bottom: 5pt;
+}
+
+.form2 textarea, .form2 input{
+    width: 90%;
+    border-radius: 5pt;
+    margin-bottom: 10pt;
+}
+
+.form2 select {
+    margin-bottom: 10pt;
+    width: 20%;
+    height: 20pt;
+    border-radius: 5pt;
+    padding-left: 5pt;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+#pp-div-passport  {
+    position: absolute;
+    right: 6%;
+    margin-right: 20pt;
+    background-color: rgb(49, 23, 2);
+    padding: 7pt;
+    border-radius: 8pt;
+    color: aliceblue;
+    outline: inset;
+    outline-offset: -3pt;
+    outline-width: 0.1px;
+}
+
+#pp-outer {
+    display: block;
+    position: relative;
+    text-align: right;
+    padding-right: 7%;
+}
+
+#pp-outer img {
+    width: 120pt;
+    border-radius: 50%;
+    right: 4%;
+    outline: double;
+    outline-offset: -6pt;
+    border: 3pt solid rgb(39, 19, 1);
 }

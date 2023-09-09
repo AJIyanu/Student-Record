@@ -7,3 +7,4 @@ app_views = Blueprint("app_views", __name__)
 
 # from models.persons.person import Persons
 from .forms import *
+from .local_json_obj import *
