@@ -22,11 +22,11 @@
     <h1 class="my-form-heading">CERTIFICATE COURSE REGISTRATION FORM</h1>
     <section class="registration-outer-container">
         <div class="registration-form-inner-container">
-            <form action="/register/certificate" method="post" class="form  active">
+            <form action="/register/certificate" method="post" class="form">
                 <div id="switch-level">
                     <h3 class="change-level">Not Certificate?</h3>
                     <label for="change-level"><h3>Change Level</h3></label>
-                    <select name="change-level" id="change-level">
+                    <select name="level" id="change-level">
                         <option value="certificate">Certificate</option>
                         <option value="diploma">Diploma</option>
                         <option value="advanced">Advanced</option>
@@ -71,7 +71,7 @@
                 </div>
                 <div class="flexme">
                     <label for="church-address">Church Address</label>
-                    <textarea name="church-address" id="church-address" cols="72" style="height: 40pt; margin-bottom: -10pt;"></textarea>
+                    <textarea name="church" id="church-address" cols="72" placeholder="Full Church Name and Address" style="height: 40pt; margin-bottom: -10pt;"></textarea>
                 </div>
                 <div class="flexme">
                     <label for="phone">Phone 1</label>
@@ -104,7 +104,7 @@
             </form>
             <form action="/register/certificate" method="post" class="form2">
                 <div id="pp-outer">
-                    <img src="../static/images/passports/provost.jpg" alt="passport" id="dp">
+                    <img src="../static/images/passports/defualt.png" alt="passport" id="dp">
                     <div id="pp-div-passport">
                         <label for="pp-image">Upload Picture</label>
                         <input type="file" id="pp-image" accept="image/jpeg, image/png, image/jpg" style="display: none;">

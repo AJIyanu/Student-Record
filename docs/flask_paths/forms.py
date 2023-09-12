@@ -4,7 +4,7 @@
 # import base64
 import sys
 import json
-from datetime import date
+from datetime import date, datetime
 from importlib import import_module
 
 from flask_paths import app_views
@@ -58,10 +58,18 @@ def login():
 @jwt_required()
 def registeration_form(level):
     """returns registration form"""
+    user_id = get_jwt_identity()
+    student = Student.find_me(user_id)
     if request.method == "GET":
         return render_template(f"{level}-sign-up.html")
     details = request.form
-    add_student_info("2023", "certificate", {"id": "22", "user": details})
+    print(details)
+    student.dob = datetime.fromisoformat(details.get('dob', date.today()))
+    student.update(**details)
+    user_dp = request.files.get("dp_image")
+    if user_dp:
+        user_dp.save(f"docs/static/images/passports/{student.surname}_{user_id}.jpg")
+    add_student_info("2023", details['level'], {"id": user_id, "studentData": details})
     return jsonify(details=details)
 
 
@@ -69,12 +77,14 @@ def registeration_form(level):
 def register_new_user():
     """registers a new user"""
     details = request.form
+    print(details)
     error_list = []
     for key, check in details.items():
         if check == "":
             error_list.append(f"{key} is empty")
     if len(error_list) > 0:
         return jsonify(error=error_list)
+    print("no errors proceeding to save")
     new_student = Student(dob=date.today(), **details)
     new_student.status = "Prospective"
     new_student.save_me()
@@ -84,4 +94,5 @@ def register_new_user():
     access_token = create_access_token(identity=new_student.id)
     response = make_response(redirect(f"/register/{new_student.level}"))
     set_access_cookies(response, access_token)
+    print("saved, now redirecting")
     return response

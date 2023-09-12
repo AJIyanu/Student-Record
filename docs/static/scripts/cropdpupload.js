@@ -32,10 +32,25 @@ upload.addEventListener("change", () => {
         });
 
         uploadUrl = canvas.toDataURL()
-        contain.style.display = "none";
-        dp.src = uploadUrl;
+
         cropper.destroy();
         cropper = null;
+
+        canvas.toBlob((blob) => {
+            const formData = new FormData();
+
+            formData.append("dp_image", blob);
+
+            fetch("/register/certificate", {
+                method: 'POST',
+                body: formData
+            })
+            .then(() => {
+                contain.style.display = "none";
+                dp.src = uploadUrl;
+            })
+            .catch(err => console.error)
+        })
     }
 
     upload.value = "";

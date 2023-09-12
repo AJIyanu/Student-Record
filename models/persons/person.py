@@ -32,9 +32,11 @@ class Persons(Base):
     firstname = Column(String(20), nullable=False)
     middlename = Column(String(20))
     dob = Column(DateTime, nullable=False)
-    phone = Column(String(15))
+    phone = Column(String(30))
     address = Column(Text)
     church = Column(String(30))
+    state = Column(String(30))
+    lga = Column(String(30))
     occupation = Column(String(20))
     sex = Column(String(5),
                  CheckConstraint("sex IN ('Male', 'Female')"))
@@ -90,6 +92,15 @@ class Persons(Base):
     def json_me(self):
         """returns a json representation of self"""
         return json.dumps(self.to_dict())
+
+    def update(self, **data):
+        """Updates user data and save to database"""
+        for name, value in data.items():
+            if name != "dob":
+                setattr(self, name, value)
+            else:
+                setattr(self, "dob", datetime.fromisoformat(value))
+        self.save_me()
 
     @classmethod
     def find_me(cls, id):

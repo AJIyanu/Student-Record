@@ -1,0 +1,318 @@
+{
+    "type": "MySQLNotebook",
+    "version": "1.0",
+    "caption": "DB Notebook",
+    "content": "\\about\ndrop SCHEMA student_record;\n-- prepares a MySQL server for the project\n\nCREATE DATABASE IF NOT EXISTS Student_Record;\nCREATE USER IF NOT EXISTS 'admin'@'localhost' IDENTIFIED BY 'mesacot';\nGRANT ALL PRIVILEGES ON `Student_Record`.* TO 'admin'@'localhost';\nGRANT SELECT ON `performance_schema`.* TO 'admin'@'localhost';\nFLUSH PRIVILEGES;\n\nUSE student_record;\nSHOW TABLES;\n",
+    "options": {
+        "tabSize": 4,
+        "indentSize": 4,
+        "insertSpaces": true,
+        "defaultEOL": "LF",
+        "trimAutoWhitespace": true
+    },
+    "viewState": {
+        "cursorState": [
+            {
+                "inSelectionMode": false,
+                "selectionStart": {
+                    "lineNumber": 13,
+                    "column": 1
+                },
+                "position": {
+                    "lineNumber": 13,
+                    "column": 1
+                }
+            }
+        ],
+        "viewState": {
+            "scrollLeft": 0,
+            "firstPosition": {
+                "lineNumber": 3,
+                "column": 1
+            },
+            "firstPositionDeltaTop": -12
+        },
+        "contributionsState": {
+            "editor.contrib.folding": {},
+            "editor.contrib.wordHighlighter": false
+        }
+    },
+    "contexts": [
+        {
+            "state": {
+                "start": 1,
+                "end": 1,
+                "language": "mysql",
+                "result": {
+                    "type": "text",
+                    "text": [
+                        {
+                            "type": 2,
+                            "content": "Welcome to the MySQL Shell - DB Notebook.\n\nPress Ctrl+Enter to execute the current statement.\n\nExecute \\sql to switch to SQL, \\js to JavaScript and \\ts to TypeScript mode.\nExecute \\help or \\? for help;",
+                            "language": "ansi"
+                        }
+                    ]
+                },
+                "currentHeight": 28,
+                "statements": [
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 0,
+                            "length": 6
+                        },
+                        "contentStart": 0,
+                        "state": 0
+                    }
+                ]
+            },
+            "data": []
+        },
+        {
+            "state": {
+                "start": 2,
+                "end": 2,
+                "language": "mysql",
+                "result": {
+                    "type": "text",
+                    "text": [
+                        {
+                            "type": 4,
+                            "index": 0,
+                            "resultId": "988c541a-e5b0-433f-e5e2-cd534f901d72",
+                            "content": "OK, 0 records retrieved in 2.0924904346466064s"
+                        }
+                    ]
+                },
+                "currentHeight": 28,
+                "statements": [
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 0,
+                            "length": 27
+                        },
+                        "contentStart": 1,
+                        "state": 0
+                    }
+                ]
+            },
+            "data": []
+        },
+        {
+            "state": {
+                "start": 3,
+                "end": 10,
+                "language": "mysql",
+                "result": {
+                    "type": "text",
+                    "text": [
+                        {
+                            "type": 4,
+                            "index": 0,
+                            "resultId": "7479ee47-73c0-433b-def7-1fc931858bb2",
+                            "content": "OK, 0 records retrieved in 77.017ms"
+                        },
+                        {
+                            "type": 4,
+                            "index": 1,
+                            "resultId": "1e021955-f6f2-4ceb-9038-5bde69ba422f",
+                            "content": "OK, 0 records retrieved in 552.471ms"
+                        },
+                        {
+                            "type": 4,
+                            "index": 2,
+                            "resultId": "0ec18179-a637-4c51-98c2-0a83790236b9",
+                            "content": "OK, 0 records retrieved in 541.625ms"
+                        },
+                        {
+                            "type": 4,
+                            "index": 3,
+                            "resultId": "c9a389f7-c8e0-442b-b29d-e3be31b3b5f9",
+                            "content": "OK, 0 records retrieved in 109.352ms"
+                        },
+                        {
+                            "type": 4,
+                            "index": 4,
+                            "resultId": "4dcd11b1-dec1-4f3f-bfe1-1d838824525b",
+                            "content": "OK, 0 records retrieved in 187.493ms"
+                        }
+                    ]
+                },
+                "currentHeight": 108,
+                "statements": [
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 0,
+                            "length": 89
+                        },
+                        "contentStart": 44,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 89,
+                            "length": 71
+                        },
+                        "contentStart": 90,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 160,
+                            "length": 67
+                        },
+                        "contentStart": 161,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 227,
+                            "length": 63
+                        },
+                        "contentStart": 228,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 290,
+                            "length": 18
+                        },
+                        "contentStart": 291,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 308,
+                            "length": 1
+                        },
+                        "contentStart": 307,
+                        "state": 3
+                    }
+                ]
+            },
+            "data": []
+        },
+        {
+            "state": {
+                "start": 11,
+                "end": 11,
+                "language": "mysql",
+                "result": {
+                    "type": "text",
+                    "text": [
+                        {
+                            "type": 4,
+                            "index": 0,
+                            "resultId": "fe712f63-ffa9-4d35-9352-ca0e1cd9193f",
+                            "content": "OK, 0 records retrieved in 0s"
+                        }
+                    ]
+                },
+                "currentHeight": 28,
+                "statements": [
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 0,
+                            "length": 19
+                        },
+                        "contentStart": 0,
+                        "state": 0
+                    }
+                ]
+            },
+            "data": []
+        },
+        {
+            "state": {
+                "start": 12,
+                "end": 12,
+                "language": "mysql",
+                "result": {
+                    "type": "resultIds",
+                    "list": [
+                        "26390ded-e1bd-4207-e380-813518a947eb"
+                    ]
+                },
+                "currentHeight": 250,
+                "statements": [
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 0,
+                            "length": 12
+                        },
+                        "contentStart": 0,
+                        "state": 0
+                    }
+                ]
+            },
+            "data": [
+                {
+                    "tabId": "1edbfdf0-f027-4b2e-9621-93d7fdf49601",
+                    "resultId": "26390ded-e1bd-4207-e380-813518a947eb",
+                    "rows": [
+                        {
+                            "0": "administrators"
+                        },
+                        {
+                            "0": "allpersons"
+                        },
+                        {
+                            "0": "attendance"
+                        },
+                        {
+                            "0": "authentications"
+                        },
+                        {
+                            "0": "courses"
+                        },
+                        {
+                            "0": "lecturers"
+                        },
+                        {
+                            "0": "score"
+                        },
+                        {
+                            "0": "students"
+                        }
+                    ],
+                    "columns": [
+                        {
+                            "title": "Tables_in_student_record",
+                            "field": "0",
+                            "dataType": {
+                                "type": 17
+                            }
+                        }
+                    ],
+                    "executionInfo": {
+                        "text": "OK, 8 records retrieved in 140.651ms"
+                    },
+                    "totalRowCount": 8,
+                    "hasMoreRows": false,
+                    "currentPage": 0,
+                    "index": 0,
+                    "sql": "SHOW TABLES"
+                }
+            ]
+        },
+        {
+            "state": {
+                "start": 13,
+                "end": 13,
+                "language": "mysql",
+                "currentHeight": 180,
+                "statements": []
+            },
+            "data": []
+        }
+    ]
+}

@@ -35,8 +35,8 @@ class Auth(Base):
     updated_at = Column(DateTime, default=datetime.utcnow())
     __password = Column(String(128), nullable=False)
     __reset_token = Column(String(256), nullable=False, default="newuser")
-    email = Column(String(30))
-    username = Column(String(15),  unique=True, nullable=False)
+    email = Column(String(45))
+    username = Column(String(45),  unique=True, nullable=False)
 
     def __init__(self, **kwargs):
         """creates the person instance from key word argument"""

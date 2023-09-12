@@ -17,12 +17,11 @@ def add_student_info(session: str, level:str, student_dict:dict=None):
     with open(filename, "r+", encoding="utf8") as file:
         try:
             datas = json.load(file)
-            print("found", datas)
         except json.JSONDecodeError:
             datas = {}
     with open(filename, "w+", encoding="utf8") as file:
         if student_dict.get("id") in datas:
-            datas[student_dict.get("id")] = student_dict
+            datas[student_dict.get("id")].update(student_dict)
         else:
             datas.update({f"{student_dict.get('id', '1')}": student_dict})
         json.dump(datas, file)
