@@ -7,7 +7,7 @@ from os import getenv, name
 
 from flask_jwt_extended import JWTManager, get_jwt, create_access_token
 from flask_jwt_extended  import set_access_cookies, get_jwt_identity
-from flask import Flask, jsonify, send_file, render_template
+from flask import Flask, jsonify, send_file, render_template, request
 
 from flask_paths import app_views
 
@@ -18,7 +18,7 @@ app.config['TEMPLATES_AUTO_RELOAD'] = True
 app.config['SECRET_KEY'] = 'roseismysecretkey'
 app.config["JWT_TOKEN_LOCATION"] = ["cookies", "headers"]
 app.config['JWT_ACCESS_TOKEN_EXPIRES'] = timedelta(hours=2)
-app.config['JWT_CSRF_METHODS'] = ['PUT', 'PATCH', 'DELETE']
+# app.config['JWT_CSRF_METHODS'] = ['PUT', 'PATCH', 'DELETE']
 app.config['FOLLOW_SYMLINKS'] = True
 app.config['JWT_SECRET_KEY'] = 'roseismysecretekey'
 jwt = JWTManager(app)
@@ -43,11 +43,6 @@ def refresh_expiring_jwts(response):
         return response
 
 
-@app.before_request
-def handle_before():
-    """handles stuff before request is made"""
-    pass
-
 @app.route("/favicon.ico", methods=["GET"])
 def favicon():
     """returns favicon"""
@@ -60,6 +55,12 @@ def index_page():
         return render_template("index_win.html")
     return render_template("index.html")
 
+@app.before_request
+def handle_before():
+    """handles stuff before request is made"""
+    csrf = request.form.get("csrf_token")
+    if csrf:
+        request.headers['X-CSRF-Token'] = csrf
 
 @app.errorhandler(404)
 def not_found(error) -> str:

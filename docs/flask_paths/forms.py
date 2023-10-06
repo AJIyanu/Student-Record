@@ -8,7 +8,7 @@ from datetime import date, datetime
 from importlib import import_module
 
 from flask_paths import app_views
-from flask import render_template, request, redirect, jsonify
+from flask import render_template, request, redirect, jsonify, url_for
 from flask import make_response
 from flask_jwt_extended import (set_access_cookies, create_access_token,
                                 get_jwt_identity, jwt_required)
@@ -43,7 +43,7 @@ def login():
         if user.validate_password(pwd):
             user = Persons.find_me(user.id)
     else:
-        return jsonify({"error": "Invalid username or passowrd"})
+        return redirect(url_for('index_page', error="Invalid username or passowrd"))
     userdata = json.loads(user.json_me())
     access_token = create_access_token(identity=user.id)
     if user.status is None or user.status == "Prospective":
@@ -63,12 +63,18 @@ def registeration_form(level):
     if request.method == "GET":
         return render_template(f"{level}-sign-up.html")
     details = request.form
-    print(details)
-    student.dob = datetime.fromisoformat(details.get('dob', date.today()))
+    print(student)
+    # there are cases where date of birth is not saved and needs handling..........................................
+    try:
+        student.dob = datetime.fromisoformat(details['dob'])
+    except KeyError:
+        pass
     student.update(**details)
+    print(student.to_dict())
     user_dp = request.files.get("dp_image")
     if user_dp:
-        user_dp.save(f"docs/static/images/passports/{student.surname}_{user_id}.jpg")
+        user_dp.save(f"docs/static/images/passports/{student.surname}_{user_id}.png")
+        student.update(image=f"{student.surname}_{user_id}.png")
     add_student_info("2023", details['level'], {"id": user_id, "studentData": details})
     return jsonify(details=details)
 

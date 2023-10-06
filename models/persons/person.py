@@ -38,8 +38,8 @@ class Persons(Base):
     state = Column(String(30))
     lga = Column(String(30))
     occupation = Column(String(20))
-    sex = Column(String(5),
-                 CheckConstraint("sex IN ('Male', 'Female')"))
+    sex = Column(String(10),
+                 CheckConstraint("sex IN ('Male', 'Female', 'none')"))
     image = Column(String(30))
 
     def __init__(self, **kwargs):
@@ -68,6 +68,7 @@ class Persons(Base):
             self.dob = dob
         for key, value in kwargs.items():
             setattr(self, key, value)
+        self.image = "default.png"
         vault = import_module("models").vault
         vault.new(self)
 
