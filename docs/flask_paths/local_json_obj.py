@@ -4,7 +4,10 @@ section loads local json object and returns json data
 """
 import json
 
-from flask_paths import app_views
+try:
+    from flask_paths import app_views
+except ModuleNotFoundError:
+    from docs.flask_paths import app_views
 from flask import jsonify
 
 

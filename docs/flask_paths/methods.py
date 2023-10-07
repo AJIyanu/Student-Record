@@ -25,3 +25,14 @@ def add_student_info(session: str, level:str, student_dict:dict=None):
         else:
             datas.update({f"{student_dict.get('id', '1')}": student_dict})
         json.dump(datas, file)
+
+
+def load_student_info(sess: str, level:str, id:str) -> dict:
+    """returns student other info data"""
+    filename = f"storage/student-other-info/{level}-{sess}.json"
+    with open(filename, 'r', encoding='utf-8') as file:
+        try:
+            data = json.load(file)
+        except json.JSONDecodeError:
+            data = {}
+    return data.get(id)

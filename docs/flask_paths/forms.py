@@ -7,8 +7,13 @@ import json
 from datetime import date, datetime
 from importlib import import_module
 
-from flask_paths import app_views
+
+try:
+    from flask_paths import app_views
+except ModuleNotFoundError:
+    from docs.flask_paths import app_views
 from flask import render_template, request, redirect, jsonify, url_for
+from flask import session
 from flask import make_response
 from flask_jwt_extended import (set_access_cookies, create_access_token,
                                 get_jwt_identity, jwt_required)
@@ -43,7 +48,8 @@ def login():
         if user.validate_password(pwd):
             user = Persons.find_me(user.id)
     else:
-        return redirect(url_for('index_page', error="Invalid username or passowrd"))
+        session['error'] = "Invalid Username or Password"
+        return redirect(url_for('index_page'))
     userdata = json.loads(user.json_me())
     access_token = create_access_token(identity=user.id)
     if user.status is None or user.status == "Prospective":
@@ -61,10 +67,9 @@ def registeration_form(level):
     user_id = get_jwt_identity()
     student = Student.find_me(user_id)
     if request.method == "GET":
-        return render_template(f"{level}-sign-up.html")
+        return render_template(f"{level}-sign-up.html", user=json.dumps(student.to_dict()))
     details = request.form
     print(student)
-    # there are cases where date of birth is not saved and needs handling..........................................
     try:
         student.dob = datetime.fromisoformat(details['dob'])
     except KeyError:
@@ -90,7 +95,6 @@ def register_new_user():
             error_list.append(f"{key} is empty")
     if len(error_list) > 0:
         return jsonify(error=error_list)
-    print("no errors proceeding to save")
     new_student = Student(dob=date.today(), **details)
     new_student.status = "Prospective"
     new_student.save_me()

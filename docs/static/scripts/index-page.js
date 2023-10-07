@@ -6,9 +6,21 @@ const getStartedForm = document.querySelector('.get-started');
 const aboutUs = document.querySelector('.about-us');
 const labelIcon = document.querySelector('.show-form .bi');
 const level = document.querySelector('#level');
-let userData = document.getElementById('all-data').getAttribute('data-user')
+let msg = document.getElementById('all-data').getAttribute('data-msg');
 
-userData = JSON.parse(userData);
+try {
+  if (msg !== "") {
+    let notis = new AWN({
+        position: "top-right",
+        durations: {info: 8000,},
+        labels: {info: "Not Successful!"},
+    });
+    notis.info(`${msg}! Please select get started button to register`);
+    console.log(msg)
+  }
+} catch (error) {
+  console.error(error);
+}
 
 // console.log(showForm);
 // console.log(getStartedForm);
@@ -72,50 +84,3 @@ submit.addEventListener("click", (e) => {
 })
 
 // NOT A COMPLETE THOUGHT YET IMOPRTING SWAL AND AJAX REQUEST
-
-$.ajax({
-    url: url,
-    type: "POST",
-    data: formData,
-    processData: false,
-    contentType: false,
-    headers: {
-      "X-CSRF-Token": csrf
-    },
-    success: function(response) {
-      if (response.hasOwnProperty("success")) {
-          Swal.fire({
-              text: response.success,
-              icon: 'success',
-              allowOutsideClick: false,
-              showCancelButton: true,
-              confirmButtonText: 'Home',
-              cancelButtonText: 'New'
-            }).then((result) => {
-              if (result.isConfirmed) {
-                window.location.href = "/dashboard/nurses";
-              } else if (result.dismiss === Swal.DismissReason.cancel) {
-                window.location.href = "/vitalsign";
-              }
-            });
-      } else if (response.hasOwnProperty("error")) {
-          Swal.fire({
-              text: "There has been an error! Either you are not authorized or an internal error. If error persist, contact administrator",
-              icon: 'error',
-              allowOutsideClick: false,
-              showCancelButton: true,
-              confirmButtonText: 'Sign in as a Nurse',
-              cancelButtonText: 'Try Again'
-            }).then((result) => {
-              if (result.isConfirmed) {
-                window.location.href = "/dashboard/nurses";
-              } else if (result.dismiss === Swal.DismissReason.cancel) {
-                window.location.href = "/vitalsign";
-              }
-            });
-      }
-    },
-    error: function(xhr, status, error) {
-      console.error(error);
-    }
-  });

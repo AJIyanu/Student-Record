@@ -8,6 +8,7 @@ from os import getenv, name
 from flask_jwt_extended import JWTManager, get_jwt, create_access_token
 from flask_jwt_extended  import set_access_cookies, get_jwt_identity
 from flask import Flask, jsonify, send_file, render_template, request
+from flask import session
 
 from flask_paths import app_views
 
@@ -51,8 +52,10 @@ def favicon():
 @app.route("/", methods=["GET"])
 def index_page():
     """returns the index page"""
+    error = session.get('error', "")
+    session.clear()
     if name == "nt":
-        return render_template("index_win.html")
+        return render_template("index_win.html", msg=error)
     return render_template("index.html")
 
 @app.before_request

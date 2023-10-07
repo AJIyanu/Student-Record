@@ -7,6 +7,7 @@ fetch('/states')
   options.forEach(option => {
     const optionElement = document.createElement('option');
     optionElement.textContent = option;
+    optionElement.value = option;
     stateSelect.appendChild(optionElement)
   });
 });
