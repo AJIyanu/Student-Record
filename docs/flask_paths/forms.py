@@ -25,6 +25,7 @@ from .methods import add_student_info
 # print(sys.path)
 sys.path.insert(0, 'C:\\Users\\adere\\Documents\\GitHub\\AJIyanu\\Mesacot\\Student Record')
 sys.path.insert(0, '/home/ajiyanu/aj_project/Student-Record/')
+sys.path.insert(0, '/data/data/com.termux/files/home/AJIyanu/Student-Record/')
 Auth = import_module("models.persons.auth").Auth
 Persons = import_module("models.persons.person").Persons
 Student = import_module("models.persons.students").Student
