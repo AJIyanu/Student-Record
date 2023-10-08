@@ -12,6 +12,7 @@ try:
     from flask_paths import app_views
 except ModuleNotFoundError:
     from docs.flask_paths import app_views
+from .methods import load_student_info, add_student_info
 from flask import render_template, request, redirect, jsonify, url_for
 from flask import session
 from flask import make_response
@@ -68,9 +69,15 @@ def registeration_form(level):
     user_id = get_jwt_identity()
     student = Student.find_me(user_id)
     if request.method == "GET":
-        return render_template(f"{level}-sign-up.html", user=json.dumps(student.to_dict()))
+        other_info = load_student_info("2023", level, student.id).get('studentData')
+        studdata = student.to_dict()
+        for key, value in other_info.items():
+            if key not in studdata:
+                print(f"{key} is absent. adding {value}")
+                studdata.update({key: value})
+        return render_template(f"{level}-sign-up.html",
+                               user=json.dumps(studdata))
     details = request.form
-    print(student)
     try:
         student.dob = datetime.fromisoformat(details['dob'])
     except KeyError:
