@@ -8,6 +8,7 @@ const labelIcon = document.querySelector('.show-form .bi');
 const level = document.querySelector('#level');
 let msg = document.getElementById('all-data').getAttribute('data-msg');
 
+console.log(msg);
 try {
   if (msg !== "") {
     let notis = new AWN({
