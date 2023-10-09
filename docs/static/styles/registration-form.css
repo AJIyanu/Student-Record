@@ -126,7 +126,7 @@ body {
     height: 25pt;
 }
 
-.active {
+.inactive {
     display: none;
 }
 

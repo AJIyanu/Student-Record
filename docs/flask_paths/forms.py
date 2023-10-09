@@ -83,13 +83,13 @@ def registeration_form(level):
     except KeyError:
         pass
     student.update(**details)
-    print(student.to_dict())
+    # print(student.to_dict())
     user_dp = request.files.get("dp_image")
     if user_dp:
         user_dp.save(f"docs/static/images/passports/{student.surname}_{user_id}.png")
         student.update(image=f"{student.surname}_{user_id}.png")
-    add_student_info("2023", details['level'], {"id": user_id, "studentData": details})
-    return jsonify(details=details)
+    add_student_info("2023", level, {"id": user_id, "studentData": details})
+    return jsonify(details=details, status="success")
 
 
 @app_views.route("/get-started", methods=["POST"])
