@@ -134,7 +134,7 @@ body {
     padding-top: 7%;
     padding-bottom: 5%;
     padding-left: 8%;
-    display: block;
+    /* display: block; */
 }
 
 .form2 label {

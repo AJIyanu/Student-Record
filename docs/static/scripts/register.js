@@ -96,6 +96,7 @@ function submitForm(form, callback) {
 // Pick Submit Form and Perform submit
 const save = document.getElementById('save');
 const save2 = document.getElementById('save2');
+const exit = document.querySelectorAll('.exit');
 
 save.addEventListener("click", (e) => {
   e.preventDefault();
@@ -129,7 +130,7 @@ save2.addEventListener("click", (e) => {
       position: "top-right",
       labels: {success: "Successful!"},
   });
-    await notis.success('Your data was saved successfully');
+    notis.success('Your data was saved successfully');
     await new Promise(resolve => setTimeout(resolve, 4000));
     window.location.href = '/';
   } else {
@@ -140,4 +141,14 @@ save2.addEventListener("click", (e) => {
     notis.warning(`There is a problem saving your data. Please contact admin or try again`);
   }
   });
+})
+
+exit.forEach((node) => {
+  node.addEventListener("click", async function(e) {
+    e.preventDefault();
+    const notis = new AWN({position: "top-left",});
+    notis.info("Your data is not saved and you are being directed to homepage");
+    await new Promise(resolve => setTimeout(resolve, 6000));
+    window.location.href = '/';
+  })
 })
