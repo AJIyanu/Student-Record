@@ -14,7 +14,7 @@ def add_student_info(session: str, level:str, student_dict:dict=None):
     if student_dict is None:
         student_dict = {}
     filename = f"storage/student-other-info/{level}-{session}.json"
-    with open(filename, "r+", encoding="utf8") as file:
+    with open(filename, "w+", encoding="utf8") as file:
         try:
             datas = json.load(file)
         except json.JSONDecodeError:
@@ -30,9 +30,9 @@ def add_student_info(session: str, level:str, student_dict:dict=None):
 def load_student_info(sess: str, level:str, id:str) -> dict:
     """returns student other info data"""
     filename = f"storage/student-other-info/{level}-{sess}.json"
-    with open(filename, 'r+', encoding='utf-8') as file:
+    with open(filename, 'w+', encoding='utf-8') as file:
         try:
             data = json.load(file)
         except json.JSONDecodeError:
             data = {}
-    return data.get(id)
+    return data.get(id, {})

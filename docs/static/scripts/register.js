@@ -10,6 +10,7 @@ console.log(userData);
 // console.log(allInput);
 for (const name of allInput) {
     if (name.id == "pp-image") {
+      name.url = `../static/images/passports/${userData.Image}`;
     } else if (userData[name.name] === undefined) {
     } else if (name.name === "dob") {
         name.value = userData[name.name].split('T')[0];
@@ -30,6 +31,7 @@ for (const name of allSelect) {
     } else if (name.name == "lga") {
     } else if (name.name == "country-code") {
     } else if (userData[name.name] === undefined) {
+    } else if (name.name == "level") {
     } else {
     name.value = userData[name.name];
     }

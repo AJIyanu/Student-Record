@@ -8,7 +8,7 @@ const labelIcon = document.querySelector('.show-form .bi');
 const level = document.querySelector('#level');
 let msg = document.getElementById('all-data').getAttribute('data-msg');
 
-console.log(msg);
+// console.log(msg);
 try {
   if (msg !== "") {
     let notis = new AWN({
@@ -54,11 +54,11 @@ getStarted.forEach((button, index) => {
         labelIcon.classList.remove('bi-door-open-fill');
         labelIcon.classList.add('bi-person-vcard');
         if (index === 0) {
-            level.querySelector('option[value="certificate"]').selected = true;
+            level.querySelector('option[value="Certificate"]').selected = true;
         } else if (index == 1) {
-            level.querySelector("option[value='diploma']").selected = true;
+            level.querySelector("option[value='Diploma']").selected = true;
         } else {
-            level.querySelector("option[value='advanced']").selected = true;
+            level.querySelector("option[value='Advanced']").selected = true;
         }
         labelIcon.scrollIntoView({behavior: "smooth"});
     })

@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.1" name="viewport">
+    <meta content="Message of Salvation College of Theology offers Certificate, Diploma and Advanced Diploma in the study of the Bible from trained and Spirit filled Lecturers. Learn the Bible in a way applicable to your life" name="description">
+    <meta content="Bible, School, Theology, Holy Spirit, Truth, Free" name="keywords">
+
+    <title>Diploma Registration Form</title>
+    <!-- <link rel="icon" href="./static/images/favicon.ico" type="image/x-icon"> -->
+
+    <!-- css -->
+    <link rel="stylesheet" href="../static/styles/registration-form.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.0/cropper.min.css" integrity="sha512-gNSHyKCA9X3fCDdTd5UxyNaSznSyGtR9pwf5YwSp7haDRz6Gqor0nY20POCYLseXq5n/FGAEogNp7G0d56d3jg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="../static/styles/custom-notis.css">
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"/> -->
+
+    <!-- fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bebas+Neue|Shadows+Into+Light">
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="../static/scripts/custom-notis.js"></script>
+
+</head>
+<body>
+    <div id="all-data" data-user="{{ user }}" style="display: none;">{{ user }}</div>
+    <h1 class="my-form-heading">DIPLOMA COURSE REGISTRATION FORM</h1>
+    <section class="registration-outer-container">
+        <div class="registration-form-inner-container">
+            <form action="/register/diploma" method="post" class="form">
+                <div id="switch-level">
+                    <h3 class="change-level">Not Diploma?</h3>
+                    <label for="change-level"><h3>Change Level</h3></label>
+                    <select name="level" id="change-level">
+                        <option value="certificate">Certificate</option>
+                        <option value="diploma" selected>Diploma</option>
+                        <option value="advanced">Advanced</option>
+                    </select>
+                </div>
+                <div class="flexme">
+                    <label for="surname">Surname</label>
+                    <input type="text" id="surnanme" name="surname" style="width: 33%">
+                    <label for="firstname">Firstname</label>
+                    <input type="text" name="firstname" id="firstname" style="width: 33%">
+                </div>
+                <div class="flexme">
+                    <label for="middlename">Middlename</label>
+                    <input type="text" name="middlename" id="middlename" style="width: 30%">
+                    <label for="sex">Sex</label>
+                    <select name="sex" id="sex" style="width: 13%">
+                        <option value="nill" disabled selected>--</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="none">Prefer not to say</option>
+                    </select>
+                    <label for="dob">DOB</label>
+                    <input type="date" name="dob" id="dob">
+                </div>
+                <div class="flexme">
+                    <label for="nok">Next of Kin</label>
+                    <input type="text" name="nok" id="nok" placeholder="Surname    Firstname    Middlename" style="width: 80%">
+                </div>
+                <div class="flexme">
+                    <Label for="nationality">Nationality</Label>
+                    <select name="nationality" id="nationality" style="width: 15%">
+                        <option value="Nigeria" selected>Nigeria</option>
+                    </select>
+                    <label for="state">State of Origin</label>
+                    <select name="state" id="states" style="width: 15%"></select>
+                    <label for="lga">LGA</label>
+                    <select name="lga" id="lgas" style="width: 25%"></select>
+                </div>
+                <div class="flexme">
+                    <label for="address">Residential Address</label>
+                    <textarea name="address" id="address" cols="72" style="height: 40pt; margin-bottom: -20pt;" ></textarea>
+                </div>
+                <div class="flexme">
+                    <label for="church-address">Church Address</label>
+                    <textarea name="church" id="church-address" cols="72" placeholder="Full Church Name and Address" style="height: 40pt; margin-bottom: -10pt;"></textarea>
+                </div>
+                <div class="flexme">
+                    <label for="phone">Phone 1</label>
+                    <select name="country-code" id="country-code" style="width: 9%; padding-left: 0pt;">
+                        <option value="+234">+234</option>
+                    </select>
+                    <input type="number" name="phone" id="phone1" style="width: 24%; margin-left: -10pt;">
+                    <label for="phone2">Phone 2</label>
+                    <select name="country-code" id="country-code" style="width: 9%; padding-left: 0pt;">
+                        <option value="+234">+234</option>
+                    </select>
+                    <input type="number" name="phone2" id="phone2" style="width: 25%; margin-left: -10pt;">
+                </div>
+                <div class="flexme">
+                    <label for="education">Educational Qualification</label>
+                    <select name="education" id="education" style="width: 21%;">
+                        <option value="degree">Degree</option>
+                        <option value="diploma">Diploma</option>
+                        <option value="nce">NCE</option>
+                        <option value="olevel">"O" Level</option>
+                        <option value="none" selected>None</option>
+                    </select>
+                    <label for="occupation">Occupation</label>
+                    <input type="text" id="occupation" name="occupation">
+                </div>
+                <div class="flexme" style="display: flex; align-items: center;">
+                    <button type="submit" id="save">SAVE</button>
+                    <button class="exit">EXIT</button>
+                </div>
+            </form>
+            <form action="/register/diploma" method="post" class="form2 inactive">
+                <div id="pp-outer">
+                    <img src="../static/images/passports/defualt.png" alt="passport" id="dp">
+                    <div id="pp-div-passport">
+                        <label for="pp-image">Upload Picture</label>
+                        <input type="file" id="pp-image" accept="image/jpeg, image/png, image/jpg" style="display: none;">
+                    </div>
+                </div>
+                <div style="margin-top: -60pt;">
+                <label for="salvation?">Have you been saved? </label>
+                <select name="salvation-bool" id="salvation?">
+                    <option value="True">Yes</option>
+                    <option value="False" selected>No</option>
+                </select>
+                </div>
+                <div>
+                <label for="baptism?">Have you been baptized? </label>
+                <select name="baptism-bool" id="baptism?">
+                    <option value="True">Yes</option>
+                    <option value="False" selected>No</option>
+                </select>
+                </div>
+                <div>
+                <label for="holy-spirit?">Have you been baptized by the Holy Spirit? </label>
+                <select name="spirit-bool" id="holy-spirit?">
+                    <option value="True">Yes</option>
+                    <option value="False" selected>No</option>
+                </select>
+                </div>
+                <div>
+                    <label for="salvation">Brief your Salvation Experience</label>
+                    <textarea name="salvation" id="salvation" cols="30" rows="10"></textarea>
+                </div>
+                <div>
+                    <label for="motivation">Why did you want to join</label>
+                    <textarea name="motivation" id="motivation" cols="30" rows="10"></textarea>
+                </div>
+                <div>
+                    <label for="worker?">Have you been working for God? </label>
+                    <select name="worker-bool" id="worker?">
+                        <option value="True">Yes</option>
+                        <option value="False" selected>No</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="worker">What is your role in the Church?</label>
+                    <input type="text" value="None" style="width: 55%; height: 20pt;">
+                </div>
+                <div class="flexme" style="display: flex; align-items: center; margin-left: -10%;">
+                    <button type="submit" id="save2">Save</button>
+                    <button class="exit">EXIT</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalLabel">Crop image</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="img-container">
+                        <div class="row">
+                            <div class="col-md-8">
+                                 default image where we will set the src via jquery
+                                <img id="image">
+                            </div>
+                            <div class="col-md-4">
+                                <div class="preview"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" id="crop">Crop</button>
+                </div>
+            </div>
+        </div>
+    </div> -->
+
+    <section id="dp-crop">
+        <!-- show something -->
+        <div class="dp-img" style="display: flex;">
+            <div class="original-upload">
+                <img src="../static/images/home_bg.jpg" alt="crop me" width="350" id="cropmehere">
+            </div>
+            <div class="cropped-upload" style="margin-top: 100pt;">
+                <!-- <img src="../static/images/home_bg.jpg" alt="croppped me" width="160"> -->
+            </div>
+        </div>
+        <div class="crop-buttons">
+            <button id="done">Done</button>
+            <button id="cancel">Cancel</button>
+        </div>
+    </section>
+
+    <footer style="height: 100px;"></footer>
+</body>
+<script src="../static/scripts/stateslga.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.0/cropper.min.js" integrity="sha512-7C1FbUL8fX5IKwBEHEjwyyGssfSOKms2NQbMj3GYdeQTr4Xmbrk/q/4eqcDuROAbJwT71ATVpVIUiaeMnNqq/Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="../static/scripts/cropdpupload.js"></script>
+<script src="../static/scripts/register.js"></script>

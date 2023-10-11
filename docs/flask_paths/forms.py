@@ -55,7 +55,7 @@ def login():
     userdata = json.loads(user.json_me())
     access_token = create_access_token(identity=user.id)
     if user.status is None or user.status == "Prospective":
-        response = make_response(redirect("/register/certificate"))
+        response = make_response(redirect(f"/register/{user.level}"))
         set_access_cookies(response, access_token)
         return response
     return jsonify(user=userdata, status="succesful log in",
@@ -71,11 +71,12 @@ def registeration_form(level):
     if request.method == "GET":
         other_info = load_student_info("2023", level, student.id).get('studentData')
         studdata = student.to_dict()
-        for key, value in other_info.items():
-            if key not in studdata:
-                print(f"{key} is absent. adding {value}")
-                studdata.update({key: value})
-        return render_template(f"{level}-sign-up.html",
+        if other_info is not None:
+            for key, value in other_info.items():
+                if key not in studdata:
+                    # print(f"{key} is absent. adding {value}")
+                    studdata.update({key: value})
+        return render_template(f"{level.lower()}-sign-up.html",
                                user=json.dumps(studdata))
     details = request.form
     try:

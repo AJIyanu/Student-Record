@@ -5,6 +5,7 @@ const contain = document.querySelector("#dp-crop");
 const cancel = document.querySelector("#cancel");
 const cropped = document.querySelector("#done");
 const dp = document.querySelector("#dp");
+const level = document.querySelector('#change-level').value;
 
 let imgurl, cropper, uploadUrl
 
@@ -41,7 +42,7 @@ upload.addEventListener("change", () => {
 
             formData.append("dp_image", blob);
 
-            fetch("/register/certificate", {
+            fetch(`/register/${level}`, {
                 method: 'POST',
                 body: formData
             })
